@@ -1986,10 +1986,13 @@ input, select, textarea {
     
 	.test{
 		font-size: small;
+		color: black;
+		
 	}
     .my-div p {
 		margin-top: 5px;
 		margin-bottom: 5px;
+		color: black;
 	  }
 	  a.no-highlight {
 		text-decoration: none;
