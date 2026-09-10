@@ -8,12 +8,196 @@
   <!-- Replace the Google font if you'd like another look -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/main.css">
+  
 
   <!-- SEO / Social -->
   <meta name="description" content="Brenda Nogueira — PhD student in Computer Science and Engineering. Research: imbalanced regression, AI for Science, graph learning, generative AI, and agentic AI." />
   <meta property="og:title" content="Brenda Nogueira — PhD Student" />
   <meta property="og:description" content="PhD student in Computer Science and Engineering researching imbalanced regression, AI for Science, graph learning, generative AI, and agentic AI." />
+
+<style>
+:root{
+  --bg:#f7f8fb;
+  --surface:#ffffff;
+  --surface-2:#f0f3f8;
+  --text:#18212f;
+  --muted:#5f6b7a;
+  --line:#dde3ec;
+  --accent:#244f86;
+  --accent-soft:#eaf1fa;
+  --max:1120px;
+  --radius:18px;
+  --shadow:0 12px 36px rgba(24,33,47,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,248,251,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(221,227,236,.9);
+}
+.header-inner{
+  min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;flex-direction:column;color:var(--text);line-height:1.15}
+.brand:hover{text-decoration:none}
+.brand .name{font-weight:750;font-size:1.05rem}
+.brand .role{font-size:.78rem;color:var(--muted);margin-top:4px}
+.primary-nav ul{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}
+.primary-nav a{
+  display:block;padding:9px 11px;border-radius:10px;
+  color:var(--muted);font-size:.88rem;font-weight:550
+}
+.primary-nav a:hover{background:var(--surface-2);color:var(--text);text-decoration:none}
+.primary-nav .cta{background:var(--text);color:#fff;padding-inline:15px}
+.nav-toggle{display:none;background:none;border:0;font-size:1.4rem}
+
+.hero{
+  padding:78px 0 54px;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(36,79,134,.10), transparent 32%),
+    radial-gradient(circle at 18% 10%, rgba(36,79,134,.06), transparent 26%);
+}
+.hero-inner{
+  display:grid;grid-template-columns:190px minmax(0,1fr) 300px;
+  gap:42px;align-items:center
+}
+.hero-photo img{
+  width:190px;height:190px;object-fit:cover;border-radius:28px;
+  box-shadow:var(--shadow);border:5px solid var(--surface)
+}
+.big{font-size:clamp(2.7rem,6vw,5rem);line-height:.98;margin:0 0 20px;letter-spacing:-.055em}
+.lead{font-size:1.18rem;color:var(--muted);max-width:680px;margin:0 0 22px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.button,.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 16px;border-radius:11px;font-weight:650;border:1px solid var(--text)
+}
+.button{background:var(--text);color:#fff}
+.button:hover{color:#fff;text-decoration:none;transform:translateY(-1px)}
+.button.ghost{background:transparent;color:var(--text)}
+.hero-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:24px
+}
+.hero-card h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 14px}
+.hero-card p{margin:8px 0;font-size:.91rem}
+.social-links{margin-top:15px;font-size:.9rem}
+
+.section{padding:72px 0}
+.section.alt{background:var(--surface)}
+.section h2{
+  font-size:clamp(1.7rem,3vw,2.35rem);letter-spacing:-.03em;
+  margin:0 0 30px
+}
+.section h3{letter-spacing:-.015em}
+#about p{font-size:1.08rem;max-width:900px;color:#354052}
+.bullet-list{padding-left:20px}
+.bullet-list li{margin:10px 0}
+
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.timeline .item,.job,.project-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:23px
+}
+.section.alt .timeline .item,.section.alt .job{background:var(--bg)}
+.timeline h3,.job h3,.project-card h3{margin:0 0 8px;font-size:1.05rem}
+.meta{color:var(--muted);font-size:.9rem;margin:4px 0 10px}
+
+/* Publications */
+.pub-list{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.pub-item{
+  display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:22px;
+  align-items:center;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;transition:.18s ease
+}
+.pub-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#c9d4e3}
+.pub-info{min-width:0}
+.pub-title{font-size:1.08rem;font-weight:700;line-height:1.4;margin:0 0 9px}
+.pub-title em{font-style:normal}
+.pub-title a{color:var(--text)}
+.pub-title a:hover{color:var(--accent)}
+.pub-meta{margin:0;color:var(--muted);font-size:.92rem}
+.pub-thumb{
+  width:180px;height:112px;object-fit:cover;border-radius:12px;
+  border:1px solid var(--line);background:var(--surface-2)
+}
+#publications h3{
+  margin:38px 0 16px;font-size:.9rem;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--muted)
+}
+
+#experience .container{max-width:980px}
+.job{margin-bottom:14px}
+.job ul{margin:9px 0 0;padding-left:18px}
+
+.news-list{list-style:none;padding:0;display:grid;gap:12px}
+.news-list li{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:17px 20px
+}
+.news-list time{
+  display:block;color:var(--muted);font-size:.78rem;font-weight:650;
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px
+}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project-card{display:flex;flex-direction:column}
+.project-card p{color:var(--muted);flex:1}
+.project-card .btn{align-self:flex-start;background:transparent;color:var(--text);font-size:.88rem}
+.more{color:var(--muted)}
+
+#research-interests .bullet-list{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:0;list-style:none
+}
+#research-interests .bullet-list li{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;margin:0
+}
+
+#cv{text-align:center}
+.site-footer{padding:32px 0;border-top:1px solid var(--line);background:var(--surface)}
+.footer-inner{display:flex;justify-content:space-between;gap:30px;align-items:center}
+.footer-inner p{margin:3px 0;color:var(--muted);font-size:.88rem}
+
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:150px 1fr}
+  .hero-photo img{width:150px;height:150px}
+  .hero-card{grid-column:1/-1}
+  .timeline,.projects-grid,#research-interests .bullet-list{grid-template-columns:1fr 1fr}
+  .primary-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line)}
+  .primary-nav.open{display:block}
+  .primary-nav ul{display:block;padding:12px 20px 20px}
+  .nav-toggle{display:block}
+}
+@media(max-width:680px){
+  .container{width:min(100% - 28px,var(--max))}
+  .hero{padding-top:48px}
+  .hero-inner{grid-template-columns:1fr;gap:24px}
+  .hero-photo img{width:135px;height:135px}
+  .big{font-size:3rem}
+  .timeline,.projects-grid,#research-interests .bullet-list{grid-template-columns:1fr}
+  .pub-item{grid-template-columns:1fr}
+  .pub-thumb{width:100%;height:auto;max-height:220px;object-fit:cover}
+  .footer-inner{display:block}
+}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0
+}
+</style>
+
 </head>
 <body>
   <header class="site-header">
@@ -60,7 +244,7 @@
     <div class="hero-text">
       <h1 class="big">Brenda Nogueira</h1>
       <p class="lead">
-        PhD Student in Computer Science and Engineering at the University of Notre Dame.
+        PhD Student in Computer Science and Engineering at the University of Notre Dame, working at the intersection of <strong>AI for Science</strong>, <strong>graph learning</strong>, <strong>generative AI</strong>, and <strong>imbalanced regression</strong>.
       </p>
       <p class="actions">
         <a class="button" href="#publications">Publications</a>
@@ -127,7 +311,8 @@
         </div>
       </div>
     </section>
-    <!-- PUBLICATIONS -->
+    
+<!-- PUBLICATIONS -->
 <section id="publications" class="section alt">
   <div class="container">
     <h2>Publications <a href="https://scholar.google.com/citations?hl=en&user=WY4JUQMAAAAJ" target="_blank" rel="noopener">[Google Scholar]</a></h2>
@@ -136,7 +321,7 @@
     <ul class="pub-list">
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em>Rethinking Evaluation in Compound Potency Prediction</em></p>
+          <p class="pub-title"><em><a href="https://www.researchsquare.com/article/rs-5899985/v1" target="_blank" rel="noopener">Rethinking Evaluation in Compound Potency Prediction</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Nuno Moniz, Connor W. Coley, Nitesh Chawla.<br>
           <b>Machine Learning, Springer</b>, 2026</p>
         </div>
@@ -147,10 +332,13 @@
     <ul class="pub-list">
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em>SPECTRA: Spectral Domain-Aware Graph Generation for Imbalanced Molecular Property Regression</em></p>
+          <p class="pub-title"><em><a href="https://openreview.net/pdf?id=rK7yOLa15z" target="_blank" rel="noopener">SPECTRA: Spectral Domain-Aware Graph Generation for Imbalanced Molecular Property Regression</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Gisela Abigail Gonzalez-Montiel, Meng Jiang, Nitesh V. Chawla, Nuno Moniz.<br>
           <b>32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)</b>, 2026</p>
         </div>
+        <a href="https://openreview.net/pdf?id=rK7yOLa15z" target="_blank" rel="noopener">
+          <img src="images/SPECTRA2.png" alt="SPECTRA paper preview" class="pub-thumb">
+        </a>
       </li>
 
       <li class="pub-item">
@@ -163,16 +351,19 @@
 
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em><a href="https://arxiv.org/pdf/2512.11661">From Verification Burden to Trusted Collaboration: Design Goals for LLM-Assisted Literature Reviews</a></em></p>
+          <p class="pub-title"><em><a href="https://arxiv.org/pdf/2512.11661" target="_blank" rel="noopener">From Verification Burden to Trusted Collaboration: Design Goals for LLM-Assisted Literature Reviews</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Werner Geyer, Andrew Andereson, Toby Li, John Kim, Nuno Moniz, Nitesh V. Chawla.<br>
           <b>AAAI AI for Scientific Research Workshop</b>, 2026<br>
           <b>30th Annual ACM Conference on Intelligent User Interfaces (IUI), Poster Track</b>, 2026</p>
         </div>
+        <a href="https://arxiv.org/pdf/2512.11661" target="_blank" rel="noopener">
+          <img src="images/Design2.png" alt="LLM-assisted literature review paper preview" class="pub-thumb">
+        </a>
       </li>
 
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em><a href="https://arxiv.org/abs/2507.01132">Spectral Manifold Harmonization for Graph Imbalanced Regression</a></em></p>
+          <p class="pub-title"><em><a href="https://arxiv.org/abs/2507.01132" target="_blank" rel="noopener">Spectral Manifold Harmonization for Graph Imbalanced Regression</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Gabe Gomes, Meng Jiang, Nitesh V. Chawla, Nuno Moniz.<br>
           <b>42nd International Conference on Machine Learning (ICML), DIG-BUGS Workshop</b>, 2025<br>
           <b>31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), MLoG-GenAI Workshop</b>, 2025</p>
@@ -189,7 +380,7 @@
 
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em>Graph-Imbalanced Regression for Rare Phenotypes</em></p>
+          <p class="pub-title"><em><a href="https://visteam.isr.uc.pt/publications/ibpria-2025-book-of-extended-abstracts/" target="_blank" rel="noopener">Graph-Imbalanced Regression for Rare Phenotypes</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Nuno Moniz, Nitesh V. Chawla.<br>
           <b>12th Iberian Conference on Pattern Recognition and Image Analysis (IbPRIA)</b>, 2025</p>
         </div>
@@ -197,7 +388,7 @@
 
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em>Experiential-Informed Data Reconstruction for Fishery Sustainability and Policies in the Azores</em></p>
+          <p class="pub-title"><em><a href="https://link.springer.com/article/10.1007/s44248-025-00034-6" target="_blank" rel="noopener">Experiential-Informed Data Reconstruction for Fishery Sustainability and Policies in the Azores</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Gui M. Menezes, Nuno Moniz, Rita P. Ribeiro.<br>
           <b>Discover Data, Springer</b>, 2025</p>
         </div>
@@ -205,7 +396,7 @@
 
       <li class="pub-item">
         <div class="pub-info">
-          <p class="pub-title"><em>Dynamics of Fisheries in the Azores Islands: A Network Analysis Approach</em></p>
+          <p class="pub-title"><em><a href="https://link.springer.com/chapter/10.1007/978-3-031-73500-4_25" target="_blank" rel="noopener">Dynamics of Fisheries in the Azores Islands: A Network Analysis Approach</a></em></p>
           <p class="pub-meta">Authors: <strong>Brenda Nogueira</strong>, Ana Torres, Nuno Moniz, Gui M. Menezes.<br>
           <b>22nd Portuguese Conference on Artificial Intelligence (EPIA)</b>, 2024</p>
         </div>
@@ -213,6 +404,7 @@
     </ul>
   </div>
 </section>
+
 
 <!-- EXPERIENCE -->
     <section id="experience" class="section alt">
@@ -442,6 +634,7 @@
   </script>
 </body>
 </html>
+
 
 
 
